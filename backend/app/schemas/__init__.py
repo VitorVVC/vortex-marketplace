@@ -1,3 +1,9 @@
+from app.schemas.ad import (
+    AdCreate,
+    AdListResponse,
+    AdOwnerResponse,
+    AdResponse,
+)
 from app.schemas.user import (
     LoginRequest,
     TokenResponse,
@@ -6,6 +12,10 @@ from app.schemas.user import (
 )
 
 __all__ = [
+    "AdCreate",
+    "AdListResponse",
+    "AdOwnerResponse",
+    "AdResponse",
     "LoginRequest",
     "TokenResponse",
     "UserCreate",
