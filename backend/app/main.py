@@ -6,6 +6,7 @@ from .database.database import Base, engine
 from .models import Ad, User
 from .routers.auth import router as auth_router
 from .routers.ads import router as ads_router
+from .routers.stats import router as stats_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -28,6 +29,7 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(ads_router)
+app.include_router(stats_router)
 
 
 @app.get("/", tags=["Health Check"], summary="Página inicial da API", )

@@ -9,7 +9,7 @@ from app.models.ad import Ad
 from app.schemas.ad import (
     AdCreate,
     AdListResponse,
-    AdResponse,
+    AdResponse, AdUpdate,
 )
 
 router = APIRouter(
@@ -166,6 +166,66 @@ def get_ad(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Anúncio não encontrado.",
         )
+
+    return ad
+
+
+@router.patch(
+    "/{ad_id}",
+    response_model=AdResponse,
+    summary="Atualizar anúncio",
+)
+def update_ad(
+        ad_id: int,
+        ad_data: AdUpdate,
+        db: DatabaseSession,
+        current_user: CurrentUser,
+) -> Ad:
+    ad = db.scalar(
+        select(Ad)
+        .options(joinedload(Ad.owner))
+        .where(Ad.id == ad_id)
+    )
+
+    if ad is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Anúncio não encontrado.",
+        )
+
+    if ad.owner_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Você não possui permissão para editar este anúncio.",
+        )
+
+    update_data = ad_data.model_dump(exclude_unset=True)
+
+    if "title" in update_data:
+        update_data["title"] = update_data["title"].strip()
+
+    if "description" in update_data:
+        update_data["description"] = update_data["description"].strip()
+
+    if "category" in update_data:
+        update_data["category"] = update_data["category"].strip()
+
+    if "image_url" in update_data and update_data["image_url"] is not None:
+        update_data["image_url"] = str(update_data["image_url"])
+
+    for field, value in update_data.items():
+        setattr(ad, field, value)
+
+    if ad.is_donation:
+        ad.price = None
+    elif ad.price is None or ad.price <= 0:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="O preço deve ser maior que zero quando não for doação.",
+        )
+
+    db.commit()
+    db.refresh(ad)
 
     return ad
 

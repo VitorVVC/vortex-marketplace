@@ -128,3 +128,28 @@ class AdListResponse(BaseModel):
             ]
         }
     )
+
+
+class AdUpdate(BaseModel):
+    title: str | None = Field(
+        default=None,
+        min_length=3,
+        max_length=120,
+    )
+    description: str | None = Field(
+        default=None,
+        min_length=10,
+        max_length=1000,
+    )
+    category: str | None = Field(
+        default=None,
+        min_length=2,
+        max_length=50,
+    )
+    price: Decimal | None = Field(
+        default=None,
+        ge=0,
+        decimal_places=2,
+    )
+    is_donation: bool | None = None
+    image_url: HttpUrl | None = None
