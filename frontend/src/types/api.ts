@@ -52,3 +52,12 @@ export interface AuthResponse {
     token_type: string;
     user: User;
 }
+
+export interface AdPayload {
+    title: string;
+    description: string;
+    category: string;
+    price: number | null;
+    is_donation: boolean;
+    image_url: string | null;
+}
