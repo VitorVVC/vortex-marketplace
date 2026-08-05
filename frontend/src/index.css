@@ -781,13 +781,12 @@ img {
 .form-page {
     min-height: calc(100vh - 72px);
     padding: 64px 0 90px;
-    background:
-            radial-gradient(
-                    circle at 90% 8%,
-                    rgba(102, 196, 141, 0.18),
-                    transparent 28%
-            ),
-            #f7faf8;
+    background: radial-gradient(
+            circle at 90% 8%,
+            rgba(102, 196, 141, 0.18),
+            transparent 28%
+    ),
+    #f7faf8;
 }
 
 .form-page__container {
@@ -1148,5 +1147,25 @@ img {
 
     .management-card__actions .button {
         width: 100%;
+    }
+}
+
+.route-loading {
+    display: flex;
+    min-height: calc(100vh - 72px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    color: #557064;
+}
+
+.spin {
+    animation: spin 900ms linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }

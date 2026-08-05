@@ -1,24 +1,26 @@
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
-import { ProtectedRoute } from "./components/ProtectedRoute";
-import { HomePage } from "./pages/HomePage";
-import { LoginPage } from "./pages/LoginPage";
-import { MyAdsPage } from "./pages/MyAdsPage";
-import { NewAdPage } from "./pages/NewAdPage";
-import { RegisterPage } from "./pages/RegisterPage";
+import {ProtectedRoute} from "./components/ProtectedRoute";
+import {HomePage} from "./pages/HomePage";
+import {LoginPage} from "./pages/LoginPage";
+import {MyAdsPage} from "./pages/MyAdsPage";
+import {NewAdPage} from "./pages/NewAdPage";
+import {RegisterPage} from "./pages/RegisterPage";
+import {EditAdPage} from "./pages/EditAdPage";
+
 
 export default function App() {
     return (
         <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/login" element={<LoginPage/>}/>
+            <Route path="/register" element={<RegisterPage/>}/>
 
             <Route
                 path="/new-ad"
                 element={
                     <ProtectedRoute>
-                        <NewAdPage />
+                        <NewAdPage/>
                     </ProtectedRoute>
                 }
             />
@@ -27,10 +29,20 @@ export default function App() {
                 path="/my-ads"
                 element={
                     <ProtectedRoute>
-                        <MyAdsPage />
+                        <MyAdsPage/>
                     </ProtectedRoute>
                 }
             />
+
+            <Route
+                path="/ads/:adId/edit"
+                element={
+                    <ProtectedRoute>
+                        <EditAdPage/>
+                    </ProtectedRoute>
+                }
+            />
+
         </Routes>
     );
 }
