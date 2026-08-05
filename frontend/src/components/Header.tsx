@@ -1,27 +1,59 @@
-import { LogIn, PlusCircle, Recycle } from "lucide-react";
+import {
+    LogIn,
+    LogOut,
+    PlusCircle,
+    Recycle,
+    UserRound,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+
+import { useAuth } from "../contexts/AuthContext";
 
 export function Header() {
+    const { user, isAuthenticated, logout } = useAuth();
+
     return (
         <header className="header">
             <div className="container header__content">
-                <a className="brand" href="/">
+                <Link className="brand" to="/">
           <span className="brand__icon">
             <Recycle size={22} />
           </span>
 
                     <span>Desapega Campus</span>
-                </a>
+                </Link>
 
                 <nav className="header__actions">
-                    <button className="button button--ghost" type="button">
-                        <LogIn size={18} />
-                        Entrar
-                    </button>
+                    {isAuthenticated && user ? (
+                        <>
+              <span className="header__user">
+                <UserRound size={17} />
+                  {user.name}
+              </span>
 
-                    <button className="button button--primary" type="button">
+                            <button
+                                className="button button--ghost"
+                                type="button"
+                                onClick={logout}
+                            >
+                                <LogOut size={18} />
+                                Sair
+                            </button>
+                        </>
+                    ) : (
+                        <Link className="button button--ghost" to="/login">
+                            <LogIn size={18} />
+                            Entrar
+                        </Link>
+                    )}
+
+                    <Link
+                        className="button button--primary"
+                        to={isAuthenticated ? "/new-ad" : "/login"}
+                    >
                         <PlusCircle size={18} />
                         Anunciar item
-                    </button>
+                    </Link>
                 </nav>
             </div>
         </header>
