@@ -765,3 +765,15 @@ img {
         display: none;
     }
 }
+
+.protected-page {
+    padding-top: 72px;
+    padding-bottom: 72px;
+}
+
+.route-loading {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    color: #557064;
+}

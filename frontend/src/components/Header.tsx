@@ -31,6 +31,13 @@ export function Header() {
                   {user.name}
               </span>
 
+                            <Link
+                                className="button button--ghost"
+                                to="/my-ads"
+                            >
+                                Meus anúncios
+                            </Link>
+
                             <button
                                 className="button button--ghost"
                                 type="button"
@@ -41,7 +48,10 @@ export function Header() {
                             </button>
                         </>
                     ) : (
-                        <Link className="button button--ghost" to="/login">
+                        <Link
+                            className="button button--ghost"
+                            to="/login"
+                        >
                             <LogIn size={18} />
                             Entrar
                         </Link>
