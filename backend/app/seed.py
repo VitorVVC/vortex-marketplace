@@ -74,7 +74,8 @@ def seed_database() -> None:
                 price=Decimal("150.00"),
                 is_donation=False,
                 image_url=(
-                    "https://images.unsplash.com/0"
+                    "https://images.unsplash.com/"
+                    "photo-1553406830-ef2513450d76"
                 ),
                 owner_id=user.id,
             ),
@@ -87,7 +88,8 @@ def seed_database() -> None:
                 price=Decimal("45.00"),
                 is_donation=False,
                 image_url=(
-                    "https://images.unsplash.com/1"
+                    "https://images.unsplash.com/"
+                    "photo-1584982751601-97dcc096659c"
                 ),
                 owner_id=user.id,
             ),
