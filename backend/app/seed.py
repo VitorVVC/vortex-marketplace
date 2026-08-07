@@ -17,7 +17,7 @@ def seed_database() -> None:
         existing_user = db.scalar(
             select(User).where(
                 User.email == "demo@desapegacampus.com",
-                )
+            )
         )
 
         if existing_user:
@@ -45,7 +45,7 @@ def seed_database() -> None:
                 is_donation=False,
                 image_url=(
                     "https://images.unsplash.com/"
-                    "photo-1574607383476-f517f260d30b"
+                    "photo-1653074281018-c08f358059ab?auto=format&fit=crop&w=1200&q=80"
                 ),
                 owner_id=user.id,
             ),
@@ -89,7 +89,7 @@ def seed_database() -> None:
                 is_donation=False,
                 image_url=(
                     "https://images.unsplash.com/"
-                    "photo-1584982751601-97dcc096659c"
+                    "photo-1721355102239-5f5cbd2e8b66?auto=format&fit=crop&w=1200&q=80"
                 ),
                 owner_id=user.id,
             ),
