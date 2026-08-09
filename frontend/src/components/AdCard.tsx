@@ -15,16 +15,16 @@ export function AdCard({ ad }: AdCardProps) {
         : null;
 
     return (
-        <article className="ad-card">
-            <div className="ad-card__image-wrapper">
+        <article className="listing-card">
+            <div className="listing-card__image-wrapper">
                 {ad.image_url ? (
                     <img
-                        className="ad-card__image"
+                        className="listing-card__image"
                         src={ad.image_url}
                         alt={ad.title}
                     />
                 ) : (
-                    <div className="ad-card__placeholder">
+                    <div className="listing-card__placeholder">
                         <span>Sem imagem</span>
                     </div>
                 )}
@@ -32,8 +32,8 @@ export function AdCard({ ad }: AdCardProps) {
                 <span
                     className={
                         ad.is_donation
-                            ? "ad-card__badge ad-card__badge--donation"
-                            : "ad-card__badge"
+                            ? "listing-card__badge listing-card__badge--donation"
+                            : "listing-card__badge"
                     }
                 >
           {ad.is_donation ? (
@@ -47,19 +47,19 @@ export function AdCard({ ad }: AdCardProps) {
         </span>
             </div>
 
-            <div className="ad-card__content">
-                <span className="ad-card__category">{ad.category}</span>
+            <div className="listing-card__content">
+                <span className="listing-card__category">{ad.category}</span>
 
                 <h3>{ad.title}</h3>
 
-                <p className="ad-card__description">{ad.description}</p>
+                <p className="listing-card__description">{ad.description}</p>
 
-                <div className="ad-card__footer">
-                    <strong className="ad-card__price">
+                <div className="listing-card__footer">
+                    <strong className="listing-card__price">
                         {ad.is_donation ? "Grátis" : formattedPrice}
                     </strong>
 
-                    <span className="ad-card__owner">
+                    <span className="listing-card__owner">
             <UserRound size={15} />
                         {ad.owner.name}
           </span>

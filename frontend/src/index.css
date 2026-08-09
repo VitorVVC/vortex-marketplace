@@ -382,7 +382,7 @@ img {
     gap: 24px;
 }
 
-.ad-card {
+.listing-card {
     overflow: hidden;
     border: 1px solid #e0e9e3;
     border-radius: 22px;
@@ -392,30 +392,30 @@ img {
     box-shadow 180ms ease;
 }
 
-.ad-card:hover {
+.listing-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 22px 48px rgba(31, 73, 47, 0.13);
 }
 
-.ad-card__image-wrapper {
+.listing-card__image-wrapper {
     position: relative;
     height: 220px;
     overflow: hidden;
     background: #edf3ef;
 }
 
-.ad-card__image {
+.listing-card__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 250ms ease;
 }
 
-.ad-card:hover .ad-card__image {
+.listing-card:hover .listing-card__image {
     transform: scale(1.035);
 }
 
-.ad-card__placeholder {
+.listing-card__placeholder {
     display: grid;
     width: 100%;
     height: 100%;
@@ -423,7 +423,7 @@ img {
     color: #7a8d82;
 }
 
-.ad-card__badge {
+.listing-card__badge {
     position: absolute;
     top: 14px;
     left: 14px;
@@ -438,29 +438,29 @@ img {
     font-weight: 800;
 }
 
-.ad-card__badge--donation {
+.listing-card__badge--donation {
     color: #145f38;
     background: #dff8e9;
 }
 
-.ad-card__content {
+.listing-card__content {
     padding: 21px;
 }
 
-.ad-card__category {
+.listing-card__category {
     color: #16794a;
     font-size: 0.78rem;
     font-weight: 800;
     text-transform: uppercase;
 }
 
-.ad-card h3 {
+.listing-card h3 {
     margin: 8px 0 10px;
     color: #173523;
     font-size: 1.16rem;
 }
 
-.ad-card__description {
+.listing-card__description {
     display: -webkit-box;
     min-height: 48px;
     overflow: hidden;
@@ -471,7 +471,7 @@ img {
     -webkit-line-clamp: 2;
 }
 
-.ad-card__footer {
+.listing-card__footer {
     display: flex;
     align-items: end;
     justify-content: space-between;
@@ -481,12 +481,12 @@ img {
     border-top: 1px solid #edf2ef;
 }
 
-.ad-card__price {
+.listing-card__price {
     color: #146e42;
     font-size: 1.15rem;
 }
 
-.ad-card__owner {
+.listing-card__owner {
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -542,12 +542,12 @@ img {
         width: min(100% - 28px, 1120px);
     }
 
-    .header__content {
-        min-height: 64px;
+    .listing-card__image-wrapper {
+        height: 230px;
+
     }
 
-    .brand span:last-child,
-    .button--ghost {
+    .brand span:last-child {
         display: none;
     }
 
@@ -597,10 +597,6 @@ img {
 
     .ads-grid {
         grid-template-columns: 1fr;
-    }
-
-    .ad-card__image-wrapper {
-        height: 230px;
     }
 }
 
@@ -955,13 +951,12 @@ img {
 .dashboard-page {
     min-height: calc(100vh - 72px);
     padding: 64px 0 90px;
-    background:
-            radial-gradient(
-                    circle at 95% 5%,
-                    rgba(103, 198, 143, 0.17),
-                    transparent 27%
-            ),
-            #f7faf8;
+    background: radial-gradient(
+            circle at 95% 5%,
+            rgba(103, 198, 143, 0.17),
+            transparent 27%
+    ),
+    #f7faf8;
 }
 
 .dashboard-heading {
@@ -1167,5 +1162,77 @@ img {
 @keyframes spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+.mobile-menu-button,
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 680px) {
+    .header__actions--desktop {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: grid;
+        width: 44px;
+        height: 44px;
+        place-items: center;
+        border: 1px solid #d7e4dc;
+        border-radius: 13px;
+        color: #173523;
+        background: white;
+        cursor: pointer;
+    }
+
+    .mobile-menu {
+        display: block;
+        border-top: 1px solid #e3ece6;
+        background: rgba(247, 250, 248, 0.98);
+        box-shadow: 0 18px 36px rgba(31, 76, 50, 0.1);
+    }
+
+    .mobile-menu__content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 14px;
+        padding-bottom: 18px;
+    }
+
+    .mobile-menu__user {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 4px;
+        color: #365443;
+        font-weight: 750;
+    }
+
+    .mobile-menu__link {
+        display: flex;
+        min-height: 46px;
+        align-items: center;
+        gap: 9px;
+        padding: 0 14px;
+        border: 0;
+        border-radius: 12px;
+        color: #274a36;
+        background: transparent;
+        font-weight: 750;
+        text-align: left;
+    }
+
+    .mobile-menu__link--primary {
+        color: white;
+        background: #16794a;
+    }
+
+    .mobile-menu__logout {
+        width: 100%;
+        color: #9a3e3e;
+        cursor: pointer;
     }
 }

@@ -161,7 +161,7 @@ export function MyAdsPage() {
                                         {ad.image_url ? (
                                             <img src={ad.image_url} alt={ad.title} />
                                         ) : (
-                                            <div className="ad-card__placeholder">
+                                            <div className="listing-card__placeholder">
                                                 Sem imagem
                                             </div>
                                         )}
@@ -169,8 +169,8 @@ export function MyAdsPage() {
                                         <span
                                             className={
                                                 ad.is_donation
-                                                    ? "ad-card__badge ad-card__badge--donation"
-                                                    : "ad-card__badge"
+                                                    ? "listing-card__badge listing-card__badge--donation"
+                                                    : "listing-card__badge"
                                             }
                                         >
                       {ad.is_donation ? "Doação" : ad.category}
@@ -178,7 +178,7 @@ export function MyAdsPage() {
                                     </div>
 
                                     <div className="management-card__content">
-                    <span className="ad-card__category">
+                    <span className="listing-card__category">
                       {ad.category}
                     </span>
 
